@@ -1,7 +1,11 @@
-const ethereumWalletGenerator = require('ethereum-wallet-generator');
+const ethereumWalletGenerator = require('./ethereum-wallet-generator');
 
-const seedPhrase = 'your seed phrase here';
+const seedPhraseGenerator = require('seed-phrase-generator');
 
-const ethereumWallet = ethereumWalletGenerator.createEthereumWalletFromSeedPhrase(seedPhrase);
-console.log('Ethereum Address:', ethereumWallet.address);
-console.log('Ethereum Private Key:', ethereumWallet.privateKey);
+const seedPhrase = seedPhraseGenerator.generateSeedPhrase();
+
+const ethereumWallet = ethereumWalletGenerator.createEthereumWallet();
+
+console.log('Seed Phrase:', seedPhrase);
+console.log('Ethereum Address:', ethereumWallet.getAddressString());
+console.log('Ethereum Private Key:', ethereumWallet.getPrivateKeyString());
