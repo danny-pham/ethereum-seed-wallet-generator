@@ -1,13 +1,17 @@
 const seedEthereumWallet = require('seed-ethereum-wallet');
 
-function createEthereumWalletFromSeedPhrase(seedPhrase) {
-    const wallet = seedEthereumWallet.fromSeedPhrase(seedPhrase);
-    return {
-        address: wallet.getAddressString(),
-        privateKey: wallet.getPrivateKeyString()
-    };
+function generateSeedPhrase() {
+    // just test
+    seedEthereumWallet.generateSeedPhrase();
+}
+
+function createEthereumWallet() {
+    const seedPhrase = generateSeedPhrase();
+    const ethereumWallet = seedEthereumWallet.fromSeedPhrase(seedPhrase);
+    return ethereumWallet;
 }
 
 module.exports = {
-    createEthereumWalletFromSeedPhrase
+    generateSeedPhrase: generateSeedPhrase,
+    createEthereumWallet: createEthereumWallet
 };
